@@ -1,0 +1,18 @@
+<h2>以下の内容で投稿します。</h2>
+
+<%= form_with(model: @concern, url: concerns_path, local: true) do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :content %>
+  <p>title:<%= @concern.title %></p>
+  <p>content:<%= @concern.content %></p>
+  <%= image_tag(@concern.image.url) if @concern.image.url.present? %>
+  <%= form.hidden_field :image_cache %><br>
+  <%=form.submit '投稿します。' %>
+<% end %>
+
+<%= form_with(model: @concern, url: new_concern_path, local: true, method: "get") do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :content %>
+  <%= form.hidden_field :image_cache if @concern.image.url %>
+  <%= form.submit "戻る", name: "back" %>
+<% end %>

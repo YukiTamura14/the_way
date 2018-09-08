@@ -1,0 +1,15 @@
+<div class='row form'>
+  <div class='col-md-6 col-md-offset-3'>
+    <h2>Log in</h2>
+    <%= form_with(scope: :session, url: sessions_path, local: true) do |form| %>
+      <%= form.label :email %>
+      <%= form.email_field :email, class: 'form-control' %>
+
+      <%= form.label :password %>
+      <%= form.password_field :password, class: 'form-control'  %>
+
+      <%= form.submit 'Log in', class: 'btn btn-primary btn-block' %>
+    <% end %>
+    <p>新規登録 <%= link_to 'Sign up now!', new_user_path %></p>
+  </div>
+</div>

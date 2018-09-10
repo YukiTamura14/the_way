@@ -1,12 +1,22 @@
 <h2>詳細</h2>
-<p>title: <%= @concern.title %></p>
-<p>content: <%= @concern.content %></p>
-<%= image_tag  (@concern.image.url) if @concern.image.url.present? %>
+<div class='container'>
+  <p>title: <%= @concern.title %></p>
+  <p>content: <%= @concern.content %></p>
+  <%= image_tag  (@concern.image.url) if @concern.image.url.present? %>
 
-<% unless @concern.user == current_user %>
-  <% if @favorite.present? %>
-    <%= link_to 'お気に入りを解除する', favorite_path(id:@favorite.id), method: :delete %>
-  <% else %>
-    <%= link_to 'お気に入りする', favorites_path(picture_id:@concern.id), method: :post %>
+  <% unless @concern.user == current_user %>
+    <% if @favorite.present? %>
+      <%= link_to 'お気に入りを解除する', favorite_path(id:@favorite.id), method: :delete %>
+    <% else %>
+      <%= link_to 'お気に入りする', favorites_path(picture_id:@concern.id), method: :post %>
+    <% end %>
   <% end %>
-<% end %>
+
+  <p>コメント一覧</p>
+  <div id = 'comments_area'>
+    <%= render partial: 'comments/index', locals: {comments: @comments, concern: @concern} %>
+  </div>
+    <%= render partial: 'comments/form', locals: {comment: @comment, concern: @concern} %>
+    <%=link_to '編集', edit_concern_path(@concern) %>
+    <%=link_to '戻る', concerns_path %>
+</div>

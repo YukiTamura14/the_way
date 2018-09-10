@@ -18,10 +18,14 @@ class ConcernsController < ApplicationController
   def create
     @concern = Concern.new(concern_params)
     @concern.user_id = current_user.id
-    if @concern.save
-      redirect_to concerns_path, notice: '投稿されました。'
-    else
-      render :new
+    respond_to do |format|
+      if @concern.save
+        format.html{redirect_to concerns_path, notice: '投稿されました。'}
+        format.js{render :index}
+      else
+        format.html{render :new}
+        format.js{render :index}
+      end
     end
   end
 
@@ -29,6 +33,8 @@ class ConcernsController < ApplicationController
   end
 
   def show
+    @comments = @concern.comments
+    @comment = @concern.comments.build
     @favorite = current_user.favorites.find_by(concern_id: @concern.id)
   end
 

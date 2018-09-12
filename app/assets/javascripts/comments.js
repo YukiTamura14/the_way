@@ -1,5 +1,3 @@
-
-
 $('#comment_submit').on('click',function(e){
   var path = location.pathname;
   var concern_id = path.split('/')

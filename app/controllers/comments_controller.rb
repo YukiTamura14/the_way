@@ -1,13 +1,9 @@
 class CommentsController < ApplicationController
   def create
     @concern = Concern.find(params[:concern_id])
-    @comment = @concern.comments.build(comment_params)
-    respond_to do |format|
-      if @comment.save
-        format.js{render :index}
-      else
-        format.html{redirect_to concern_path(@concern), notice: '投稿できませんでした。'}
-      end
+    @comment = @concern.comments.build(content: params[:comment])
+    if @comment.save
+      render json: @comment
     end
   end
 

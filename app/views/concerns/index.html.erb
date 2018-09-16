@@ -2,14 +2,20 @@
 
 <p><%= notice %></p>
 
+<%= search_form_for @search do |form| %>
+  <%= form.label :title_cont, "内容検索" %>
+  <%= form.search_field :title_or_content_cont_any %>
+  <div class="actions"><%= form.submit "検索" %></div>
+<% end %>
+
 <% @concerns.each do |concern| %>
   <p><%= concern.title %></p>
-  <p><%= concern.content %></p>
+  <p><%= truncate(concern.content,length: 50) %></p>
   <div>
-    <%= link_to '詳細を確認する。', concern_path(concern.id) %>
+    <%= link_to "続きを読む", concern_path(concern.id) %>
       <% if concern.user_id == current_user.id %>
-        <%= link_to "編集する。", edit_concern_path(concern.id) %>
-        <%= link_to "削除する。", concern_path(concern.id), method: :delete, data: { confirm: '本当に削除しますか?'} %>
+        <%= link_to "編集する", edit_concern_path(concern.id) %>
+        <%= link_to "削除する", concern_path(concern.id), method: :delete, data: { confirm: "本当に削除しますか?"} %>
       <% end %>
    </div>
 <% end %>

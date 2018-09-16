@@ -5,6 +5,8 @@ class ConcernsController < ApplicationController
 
   def index
     @concerns = Concern.all.order('id DESC')
+    @search = Concern.ransack(params[:q])
+    @concerns = @search.result
   end
 
   def new

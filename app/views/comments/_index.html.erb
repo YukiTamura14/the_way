@@ -4,6 +4,11 @@
       <li>
         <p><%= comment.content %> </p>
       </li>
+      <div id="like-button_<%=comment.id %>">
+        <%= render "likes/like", comment: comment %>
+      </div>
+      <td><%= link_to '編集', edit_concern_comment_path(concern.id,comment.id) %></td>
+      <td><%= link_to '削除', concern_comment_path(concern.id,comment.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></td>
     <% end %>
   <% end %>
 </ul>

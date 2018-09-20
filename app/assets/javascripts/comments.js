@@ -15,7 +15,7 @@ $('#comment_submit').on('click',function(e){
                'comment':$('#comment_area').val(),
            }
        })
-       // Ajaxリクエストが成功した時発動
+
        .done(function(data) {
            $('.comment_index').append(`<li>${data.content}</li>`);
            $('#comment_area').val('')

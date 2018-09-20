@@ -13,9 +13,11 @@
   <p><%= truncate(concern.content,length: 50) %></p>
   <div>
     <%= link_to "続きを読む", concern_path(concern.id) %>
+    <% if logged_in? %>
       <% if concern.user_id == current_user.id %>
         <%= link_to "編集する", edit_concern_path(concern.id) %>
         <%= link_to "削除する", concern_path(concern.id), method: :delete, data: { confirm: "本当に削除しますか?"} %>
       <% end %>
+    <% end %>
    </div>
 <% end %>

@@ -6,7 +6,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width">
   </head>
-  
+
   <body>
     <header>
       <nav class="navbar navbar-default">
@@ -29,11 +29,11 @@
                 <li><%= link_to "Sign up", new_user_path %></li>
                 <li><%= link_to "Log in", new_session_path %></li>
               <% end %>
-              <% if logged_in? %>
+              <%# if logged_in? %>
                 <li><%= link_to "投稿一覧", concerns_path %></li>
-              <% else %>
-                <li><%= link_to "投稿一覧", new_session_path %></li>
-              <% end %>
+              <%# else %>
+                <!-- <li><%#= link_to "投稿一覧", new_session_path %></li> -->
+              <%# end %>
             </ul>
           </div>
         </div>

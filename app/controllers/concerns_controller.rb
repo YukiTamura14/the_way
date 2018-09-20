@@ -1,6 +1,6 @@
 class ConcernsController < ApplicationController
   before_action :set_concern, only: [:show, :edit, :update, :destroy]
-  before_action :require_login, only: [:new, :edit, :show, :destroy]
+  before_action :require_login, only: [:new, :edit, :destroy]
   before_action :set_user, only: [:destroy, :edit]
 
   def index
@@ -35,9 +35,11 @@ class ConcernsController < ApplicationController
   end
 
   def show
-    @comments = @concern.comments
+    @comments = @concern.comments.all.order('created_at DESC')
     @comment = @concern.comments.build
-    @favorite = current_user.favorites.find_by(concern_id: @concern.id)
+    if logged_in?
+      @favorite = current_user.favorites.find_by(concern_id: @concern.id)
+    end
   end
 
   def update
@@ -69,14 +71,7 @@ class ConcernsController < ApplicationController
     @concern = Concern.find(params[:id])
   end
 
-  def require_login
-    unless logged_in?
-      flash[:error] = 'ログインしてください。'
-      redirect_to new_user_path
-    end
-  end
-
   def set_user
-     redirect_to concerns_path unless @concern.user_id == current_user.id
+    redirect_to concerns_path unless @concern.user_id == current_user.id
   end
 end

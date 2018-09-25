@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @likes = Like.where(comment_id: params[:id])
     @comment.user_id = current_user.id
     if @comment.save
-      render :show
+      render json: @comment
     end
   end
 

@@ -1,19 +1,40 @@
-<div>
-  <h3><%= @user.name %>のページ</h3>
-  <p>メールアドレス:<%= @user.email %></p>
-  <%= image_tag(@user.icon.url) if @user.icon.url.present? %>
-  <% if logged_in? %>
-    <p><%= link_to '一覧を表示する', concerns_path %></p>
-  <% else %>
-    <p>get the way YOU THINKに参加する？<%= link_to "ログインしてください。", new_session_path %></p>
-  <% end %>
+<div class="list_and_new_btn">
+  <div class="back_to_list">
+    <%= link_to concerns_path do %>
+      <i class="fa fa-chevron-left fa-lg fa-fw" aria-hidden="true"></i><span>一覧へ</span>
+    <% end %>
+  </div>
+  <div class="back_to_list">
+    <%= link_to new_concern_path do %>
+    <i class="fa fa-plus-square fa-lg fa-fw" aria-hidden="true"></i><span>新規投稿</span>
+    <% end %>
+  </div>
 </div>
+<div class="container_fluid">
+  <div class="row">
+    <div class="user_page col-xs-12 col-sm-6 col-md-3">
+      <h3><%= @user.name %>のページ</h3>
+      <p>メールアドレス：<%= @user.email %></p>
+      <p><%= link_to "アカウントを編集する", edit_user_path(@user) %></p>
+    </div>
+    <div class="user_icon">
+      <%= image_tag(@user.icon.url, class: "icon_area" ) if @user.icon.url.present? %>
+    </div>
+  </div>
 <div>
+
+<div class="concern_index_area">
   <% @concerns.each do |concern| %>
-    <%= image_tag(concern.concern.image.url) if concern.concern.image.url.present? %>
-    <p><%= concern.user.name %></p>
-    <p><%= concern.concern.title %></p>
-    <p><%= concern.concern.content %></p>
-    <%= link_to 'お気に入りを解除する。', favorite_path(id: concern.id), method: :delete %>
-  <% end %>
+  <div class="concern_index">
+    <p>投稿：<%=link_to concern.concern.user.name, conversations_path(sender_id: current_user.id, recipient_id: concern.concern.user.id), method: :post %></p>
+    <p>タイトル：<%= concern.concern.title %></p>
+    <p>内容：<%= truncate(concern.concern.content,length: 50) %></p>
+    <%= link_to concern_path(concern.concern.id) do %>
+      <i class="fa fa-commenting" aria-hidden="true"></i>続きを読む
+    <% end %>
+    <%= link_to favorite_path(id: concern.id), method: :delete do %>
+      <i class="fa fa-heart" aria-hidden="true"></i>お気に入り解除
+    <% end %>
+  </div>
+    <% end %>
 </div>

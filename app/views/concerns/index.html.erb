@@ -1,23 +1,54 @@
-<h2>お悩み一覧</h2>
-
+<div class=index_container>
+  <div class="index_img">
+    <%=image_tag "concern_index_img.jpg", :class => "concern_index_img" %>
+  </div>
+  <div class="search">
+    <%= search_form_for @search do |search| %>
+      <%= search.label :title_cont, "内容検索" %>
+      <%= search.search_field :title_or_content_cont_any, class: "search_area", placeholder: "search.." %>
+      <%= search.button fa_icon("search"), class: "btn btn-default btn-lg" %>
+    <% end %>
+  </div>
+</div>
 <p><%= notice %></p>
-
-<%= search_form_for @search do |form| %>
-  <%= form.label :title_cont, "内容検索" %>
-  <%= form.search_field :title_or_content_cont_any %>
-  <div class="actions"><%= form.submit "検索" %></div>
-<% end %>
-
-<% @concerns.each do |concern| %>
-  <p><%= concern.title %></p>
-  <p><%= truncate(concern.content,length: 50) %></p>
-  <div>
-    <%= link_to "続きを読む", concern_path(concern.id) %>
+<div class="list_and_new_btn">
+  <div class="back_to_list">
+    <%= link_to concerns_path do %>
+      <i class="fa fa-chevron-left fa-lg fa-fw" aria-hidden="true"></i><span>一覧へ</span>
+    <% end %>
+  </div>
+  <div class="back_to_list">
+    <%= link_to new_concern_path do %>
+    <i class="fa fa-plus-square fa-lg fa-fw" aria-hidden="true"></i><span>新規投稿</span>
+    <% end %>
+  </div>
+  <div class="back_to_list">
+    <%= link_to user_path(current_user.id) do %>
+      <i class="fa fa-smile-o fa-lg fa-fw" aria-hidden="true"></i><span>Your Account</span>
+    <% end %>
+  </div>
+</div>
+<div class="concern_index_area">
+  <% @concerns.each do |concern| %>
+  <div class="concern_index">
+    <p>投稿：<%=link_to concern.user.name, conversations_path(sender_id: current_user.id, recipient_id: concern.user.id), method: :post %></p>
+    <p>タイトル：<%= concern.title %></p>
+    <p>内容：<%= truncate(concern.content,length: 50) %></p>
+    <%= link_to concern_path(concern.id) do %>
+      <i class="fa fa-commenting" aria-hidden="true"></i>続きを読む
+    <% end %>
     <% if logged_in? %>
       <% if concern.user_id == current_user.id %>
-        <%= link_to "編集する", edit_concern_path(concern.id) %>
-        <%= link_to "削除する", concern_path(concern.id), method: :delete, data: { confirm: "本当に削除しますか?"} %>
+        <%= link_to edit_concern_path(concern.id) do %>
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>編集
+        <% end %>
+        <%= link_to concern_path(concern.id), method: :delete, data: { confirm: "本当に削除しますか?"} do %>
+          <i class="fa fa-trash-o" aria-hidden="true"></i>削除
+        <% end %>
       <% end %>
+  </div>
     <% end %>
-   </div>
-<% end %>
+  <% end %>
+</div>
+
+<div id="page_top"><a href="#"></a></div>

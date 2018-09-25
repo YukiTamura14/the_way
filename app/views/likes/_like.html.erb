@@ -1,16 +1,16 @@
 <% if logged_in? %>
   <% if comment.like_user(current_user.id) %>
     <%= button_to concern_comment_like_path(concern_id: comment.concern_id, comment_id: comment.id, id: comment.likes.ids), method: :delete, id: "like-button_#{comment.id}", remote: true do %>
-      <span class = "glyphicon glyphicon-heart"></span>
+      <span class="fa fa-thumbs-up"></span>
       <span><%= comment.likes_count %></span>
     <% end %>
   <% else %>
     <%= button_to concern_comment_likes_path(concern_id: comment.concern_id, comment_id: comment.id), id: "like-button_#{comment.id}", remote: true do %>
-      <span class = "glyphicon glyphicon-heart-empty"></span>
+      <span class="fa fa-thumbs-o-up"></span>
       <span><%= comment.likes_count %></span>
     <% end %>
   <% end %>
 <% else %>
-  <span class = "glyphicon glyphicon-heart"></span>
+  <span class="fa fa-thumbs-up"></span>
   <span><%= comment.likes_count %></span>
 <% end %>

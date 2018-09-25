@@ -4,7 +4,7 @@ class ConcernsController < ApplicationController
   before_action :set_user, only: [:destroy, :edit]
 
   def index
-    @concerns = Concern.all.order('id DESC')
+    @concerns = Concern.all.order('created_at DESC')
     @search = Concern.ransack(params[:q])
     @concerns = @search.result
   end
@@ -35,6 +35,8 @@ class ConcernsController < ApplicationController
   end
 
   def show
+    @search = Concern.ransack(params[:q])
+    @concerns = @search.result
     @comments = @concern.comments.all.order('created_at DESC')
     @comment = @concern.comments.build
     if logged_in?

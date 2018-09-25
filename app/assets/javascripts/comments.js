@@ -17,7 +17,7 @@ $('#comment_submit').on('click',function(e){
        })
 
        .done(function(data) {
-           $('.comment_index').append(`<li>${data.content}</li>`);
+           $('.comment_index').prepend(`<li>${data.content}</li>`);
            $('#comment_area').val('')
        })
 });

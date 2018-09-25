@@ -1,14 +1,29 @@
 <ul class="comment_index">
   <% comments.each do |comment| %>
-    <% if comment.id.present? %>
-      <li>
-        <p><%= comment.content %> </p>
-      </li>
-      <div id="like-button_<%=comment.id %>">
-        <%= render "likes/like", comment: comment %>
+    <div class="comment_area">
+      <% if comment.id.present? %>
+        <li>
+          <div class="comment_icon_area">
+            <p class="user_icon"><%= image_tag(comment.user.icon.url, class: "comment_icon" ) if comment.user.icon.url.present? %></p>
+            <p><%= comment.content %></p>
+          </div>
+          <p class="posted_by_at">posted by <%=link_to comment.user.name, conversations_path(sender_id: current_user.id, recipient_id: comment.user.id), method: :post %></p>
+          <p class="posted_by_at"><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+        </li>
+        <% if logged_in? %>
+          <% if @concern.user_id == current_user.id %>
+            <%= link_to edit_concern_comment_path(concern.id,comment.id) do %>
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>編集
+            <% end %>
+            <%= link_to concern_comment_path(concern.id,comment.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  do %>
+              <i class="fa fa-trash-o" aria-hidden="true"></i>削除
+            <% end %>
+          <% end %>
+        <% end %>
+        <div id="like-button_<%=comment.id %>">
+          <%= render "likes/like", comment: comment %>
+        </div>
       </div>
-      <td><%= link_to '編集', edit_concern_comment_path(concern.id,comment.id) %></td>
-      <td><%= link_to '削除', concern_comment_path(concern.id,comment.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></td>
     <% end %>
   <% end %>
 </ul>

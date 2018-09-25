@@ -1,0 +1,74 @@
+.container{
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 auto;
+  position: relative;
+  min-height: 100%;
+}
+
+.top_image{
+  width: 100%;
+  filter: contrast(60%);
+}
+
+.container{
+  position: relative;
+}
+
+.title{
+  position: absolute;
+  top: 75%;
+  left: 53%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 5vw;
+  width: 55%;
+}
+
+.top_icon{
+  position: absolute;
+  top: 85%;
+  left: 70%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 4vw;
+  width: 55%;
+}
+
+.top_icon:hover{
+  color: #FAF0E6;
+}
+
+.top{
+  height: 300px;
+  padding: 30px;
+  font-size: 15px;
+  text-align: center;
+}
+
+.color{
+  background-color: #F5F5F5
+}
+
+.message1{
+  margin-top: 20px;
+  text-align: center;
+}
+
+.message5{
+  padding-top: 20px;
+  text-align: center;
+}
+
+.footer{
+  margin: 30px;
+  text-align: center;
+}

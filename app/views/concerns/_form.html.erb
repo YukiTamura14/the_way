@@ -10,17 +10,14 @@
     </div>
   <% end %>
 
-  <%= form.label :title %>
-  <%= form.text_field :title %>
-  <%= form.label :content %>
-  <%= form.text_field :content %>
-  <%= form.label :image %>
-  <%= form.file_field :image %>
-  <%= form.hidden_field :image_cache %>
-    </div>
+  <div class="concern_form">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control" %>
+    <%= form.label :content %>
+    <%= form.text_area :content, class: "form-control" %>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
+    <%= form.submit :class => "button" %>
   </div>
-</div>
-<%= form.submit '投稿します。'%>
 <% end %>
-
-<%= link_to '一覧に移動します。', concerns_path%>

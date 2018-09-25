@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
-
-  private
+  include MessagesHelper
   
+  private
+
   def require_login
     unless logged_in?
       flash[:error] = 'ログインしてください。'

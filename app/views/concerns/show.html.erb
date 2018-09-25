@@ -1,22 +1,65 @@
-<h2>詳細</h2>
-<div class='container'>
-  <p>title: <%= @concern.title %></p>
-  <p>content: <%= @concern.content %></p>
-  <%= image_tag  (@concern.image.url) if @concern.image.url.present? %>
-
-  <% unless @concern.user == current_user %>
-    <% if @favorite.present? %>
-      <%= link_to 'お気に入りを解除する', favorite_path(id:@favorite.id), method: :delete %>
-    <% else %>
-      <%= link_to 'お気に入りする', favorites_path(picture_id:@concern.id), method: :post %>
+<div class="list_and_new_btn">
+  <div class="back_to_list">
+    <%= link_to concerns_path do %>
+      <i class="fa fa-chevron-left fa-lg fa-fw" aria-hidden="true"></i><span>一覧へ</span>
     <% end %>
-  <% end %>
+  </div>
+  <div class="back_to_list">
+    <%= link_to new_concern_path do %>
+    <i class="fa fa-plus-square fa-lg fa-fw" aria-hidden="true"></i><span>新規投稿</span>
+    <% end %>
+  </div>
+  <div class="back_to_list">
+    <%= link_to user_path(current_user.id) do %>
+      <i class="fa fa-smile-o fa-lg fa-fw" aria-hidden="true"></i><span>Your Account</span>
+    <% end %>
+  </div>
+</div>
+
+<div class="search_in_show">
+    <%= search_form_for @search do |form| %>
+      <%= form.label :title_cont, "内容検索" %>
+      <%= form.search_field :title_or_content_cont_any, class: "search_area_in_show", placeholder: "search.." %>
+      <%= form.button fa_icon("search"), class: "btn btn-default btn-md" %>
+    <% end %>
+</div>
+
+<div class="container">
+  <p class="box"><%= @concern.user.name %>'s icon：<%= image_tag(@concern.user.icon.url, class: "comment_icon" ) if @concern.user.icon.url.present? %></p>
+  <p class="box">投稿：<%=link_to @concern.user.name, conversations_path(sender_id: current_user.id, recipient_id: @concern.user.id), method: :post %></p>
+  <p class="box">タイトル： <%= @concern.title %></p>
+  <div class="note">
+    <p class="line_break"><%= @concern.content %></p>
+    <p><%= image_tag  (@concern.image.url) if @concern.image.url.present? %></p>
+    <% if logged_in? %>
+      <% if @concern.user_id == current_user.id %>
+        <%= link_to edit_concern_path(@concern) do %>
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>編集
+        <% end %>
+        <%= link_to concern_path(@concern.id), method: :delete, data: { confirm: "本当に削除しますか?"} do %>
+          <i class="fa fa-trash-o" aria-hidden="true"></i>削除
+        <% end %>
+      <% end %>
+      <% unless @concern.user == current_user %>
+        <% if @favorite.present? %>
+          <%= link_to favorite_path(id:@favorite.id), method: :delete do %>
+            <i class="fa fa-heart" aria-hidden="true"></i>お気に入り解除
+          <% end %>
+        <% else %>
+          <%= link_to favorites_path(picture_id:@concern.id), method: :post do %>
+            <i class="fa fa-heart-o" aria-hidden="true"></i>お気に入り
+          <% end %>
+        <% end %>
+      <% end %>
+  </div>
+    <% end %>
 
   <p>コメント一覧</p>
-  <div id = 'comments_area'>
+  <div>
+    <%= render partial: 'comments/form', locals: {comment: @comment, concern: @concern} %>
+  </div>
+  <div id="comments_area">
     <%= render partial: 'comments/index', locals: {comments: @comments, concern: @concern} %>
   </div>
-    <%= render partial: 'comments/form', locals: {comment: @comment, concern: @concern} %>
-    <%=link_to '編集', edit_concern_path(@concern) %>
-    <%=link_to '戻る', concerns_path %>
-</div>
+
+  <div id="page_top"><a href="#"></a></div>

@@ -1,3 +1,247 @@
-// Place all the styles related to the concerns controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+html {
+  min-height: 100%;
+  font-size: 62.5%;
+}
+
+body {
+  height: 100%;
+  font-family: times;
+}
+
+header{
+  height: 80px;
+}
+
+header .navbar{
+  height: 80px;
+}
+
+.navbar-default{
+  background-color: white;
+}
+
+
+.header_list{
+  float: right;
+}
+
+.navbar {
+  margin-bottom: 0%;
+}
+
+// indexの画像と検索フォーム
+.concern_index_img{
+  width: 100%;
+}
+
+.index_container{
+  position: relative;
+}
+
+.concern_index{
+  padding: 0.5em 1em;
+  margin: 2em;
+  color: #474747;
+  background: #FFFAFA;/*背景色*/
+  border-left: double 7px #4ec4d3;/*左線*/
+}
+
+.index_container .search{
+  position: absolute;
+  font-size: 1.5em;
+  font-family :Quicksand, sans-serif;
+  top: 88%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+}
+
+.search_area{
+  border-radius: 22px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  width: 300px;
+  height: 50px;
+}
+
+
+//concern show.html.erbのcontainerの大きさ
+.container{
+  margin: 40px;
+}
+
+//concern show.html.erb戻るアイコン
+.back_to_list{
+  margin: 10px 0 20px 12px;
+}
+
+.back_to_list span{
+  font-size: 16px;
+}
+
+.list_and_new_btn{
+  display: flex;
+}
+
+// concern show.html.erbの検索フォーム
+
+.search_area_in_show{
+  width: 250px;
+  height: 30px;
+}
+
+// 投稿フォーム
+.concern_form{
+  box-sizing: border-box;
+  width: 500px;
+  height: 280px;
+  box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.2);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 3px;
+  margin-right: auto;
+  margin-left : auto;
+}
+
+.button{
+    display: inline-block;
+    padding: 7px 20px;
+	  border-radius: 25px;
+    text-decoration: none;
+    color: #FFF;
+    background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+    background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+    transition: .4s;
+    width: 400px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.button:hover {
+    background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+    background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+}
+
+// ページトップに戻る
+#page_top{
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  background: #3f98ef;
+  opacity: 0.6;
+  border-radius: 50%;
+}
+
+#page_top a{
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+}
+
+#page_top a::before{
+  font-family: FontAwesome;
+  content: '\f102';
+  font-size: 25px;
+  color: #fff;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+}
+
+// show.html.erbのcss
+p.box{
+  border-bottom: 1px dashed #4ec4d3;
+}
+
+.note{
+  padding: 0.2em 0.5em;
+  margin: 1.5em 0 2em 0;
+  background: #d6ebff;
+  box-shadow: 0px 0px 0px 10px #d6ebff;
+  border: dashed 2px white;
+  min-height: 100px;
+}
+
+p .line_break{
+  word-wrap: break-word;
+}
+
+
+// concern confirm画面
+.card {
+  width: 350px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
+}
+
+.card-img {
+  border-radius: 5px 5px 0 0;
+  max-width: 100%;
+  height: auto;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 15px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.card-text {
+  font-size: 15px;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.confirm_form{
+  width: 500px;
+  height: 280px;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 3px;
+  margin-right: auto;
+  margin-left : auto;
+}
+
+@media screen and (max-width: 1024px) {
+/* 1024pxまでの幅の場合に適応される */
+    body {
+        margin: 2%;
+    }
+}
+@media screen and (max-width: 768px) {
+/* 768pxまでの幅の場合に適応される */
+     body {
+        margin: 2%;
+    }
+}
+@media screen and (max-width: 480px) {
+/* 480pxまでの幅の場合に適応される */
+    body {
+      margin: 2%;
+    }
+}
+@media screen and (max-width: 320px) {
+/* 320pxまでの幅の場合に適応される */
+    body {
+        margin: 2%;
+    }
+}

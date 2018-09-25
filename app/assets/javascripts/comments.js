@@ -9,7 +9,7 @@ $('#comment_submit').on('click',function(e){
         }
 });
   $.ajax({
-           url:`/concerns/${concern_id}/comments`,
+           url:'/concerns/${concern_id}/comments',
            type:'POST',
            data:{
                'comment':$('#comment_area').val(),
@@ -17,7 +17,7 @@ $('#comment_submit').on('click',function(e){
        })
 
        .done(function(data) {
-           $('.comment_index').prepend(`<li>${data.content}</li>`);
+           $('.comment_index').prepend('<li>${data.content}</li>');
            $('#comment_area').val('')
        })
 });

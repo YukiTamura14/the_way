@@ -1,9 +1,15 @@
 <section class="main-image container">
   <%= image_tag "top.jpg", class: "top_image" %>
   <p class="title">get the way YOU THINK</p>
+  <% if logged_in? %>
+    <%= link_to concerns_path do %>
+      <p class="top_icon"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>start</p>
+    <% end %>
+  <% else %>
     <%= link_to new_user_path do %>
       <p class="top_icon"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>sign up</p>
     <% end %>
+  <% end %>
 </section>
 <div class="top message1">
   <p>About get the way YOU THINK</p>

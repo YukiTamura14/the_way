@@ -4,6 +4,9 @@ ja:
       comment: "コメント"
       user: "ユーザー"
     attributes:
+      concern:
+        title: "タイトル"
+        content: "内容"
       comment:
         content: "内容"
       user:

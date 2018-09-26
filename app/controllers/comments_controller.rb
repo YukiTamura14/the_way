@@ -9,6 +9,8 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     if @comment.save
       render :show
+    else
+      render :form
     end
   end
 

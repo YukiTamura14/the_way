@@ -20,7 +20,6 @@ header .navbar{
   background-color: white;
 }
 
-
 .header_list{
   float: right;
 }
@@ -63,10 +62,17 @@ header .navbar{
   border-radius: 22px;
   -webkit-border-radius: 22px;
   -moz-border-radius: 22px;
-  width: 300px;
+  width: 80%;
   height: 50px;
 }
 
+.search{
+  width: 300px;
+}
+
+.search label{
+  color: white;
+}
 
 //concern show.html.erbのcontainerの大きさ
 .container{
@@ -87,7 +93,6 @@ header .navbar{
 }
 
 // concern show.html.erbの検索フォーム
-
 .search_area_in_show{
   width: 250px;
   height: 30px;
@@ -176,11 +181,6 @@ p.box{
   min-height: 100px;
 }
 
-p .line_break{
-  word-wrap: break-word;
-}
-
-
 // concern confirm画面
 .card {
   width: 350px;
@@ -211,6 +211,7 @@ p .line_break{
   margin-top: 10px;
 }
 
+// 確認画面
 .confirm_form{
   width: 500px;
   height: 280px;
@@ -219,6 +220,10 @@ p .line_break{
   border-radius: 3px;
   margin-right: auto;
   margin-left : auto;
+}
+
+.card-text{
+  word-break: break-all;
 }
 
 @media screen and (max-width: 1024px) {
@@ -238,10 +243,60 @@ p .line_break{
     body {
       margin: 2%;
     }
+    #concern_search{
+      border-radius: 22px;
+      -webkit-border-radius: 22px;
+      -moz-border-radius: 22px;
+      padding-bottom: 15%;
+      padding-left: 15%;
+   }
+
+    .search_area{
+      width: 180px;
+      height: 30px;
+      font-size: 1em;
+    }
+
+    .search{
+      width: 50%;
+      width: 300px;
+    }
+
+    #concern_search .btn{
+      width: 36px;
+      height: 36px;
+      padding: 0;
+   }
 }
-@media screen and (max-width: 320px) {
+
+@media screen and (max-width: 360px) {
 /* 320pxまでの幅の場合に適応される */
     body {
         margin: 2%;
     }
+
+    #concern_search{
+      border-radius: 22px;
+      -webkit-border-radius: 22px;
+      -moz-border-radius: 22px;
+      padding-bottom: 15%;
+      padding-left: 15%;
+   }
+
+    .search_area{
+      width: 180px;
+      height: 30px;
+      font-size: 1em;
+    }
+
+    .search{
+      width: 50%;
+      width: 300px;
+    }
+
+    #concern_search .btn{
+      width: 36px;
+      height: 36px;
+      padding: 0;
+   }
 }

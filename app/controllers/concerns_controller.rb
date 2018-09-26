@@ -4,9 +4,8 @@ class ConcernsController < ApplicationController
   before_action :set_user, only: [:destroy, :edit]
 
   def index
-    @concerns = Concern.all.order('created_at DESC')
     @search = Concern.ransack(params[:q])
-    @concerns = @search.result
+    @concerns = @search.result.order('created_at DESC')
   end
 
   def new

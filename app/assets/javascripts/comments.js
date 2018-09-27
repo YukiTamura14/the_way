@@ -22,10 +22,10 @@ $('#comment_submit').on('click',function(e){
                           '<p class="posted_by_at">' +
                           'posted by <a rel="nofollow" data-method="post" href="/conversations?recipient_id=' + data.comment_user_id + '&;sender_id=' + data.current_user_id + '">' + data.name +
                           '</a>' + '</p>' + '<p class="posted_by_at">' + data.created_at + '</p>' + '</li>' +
-                          '<a href="/concerns/"' + concern_id + "/comments/" + data.id + '/edit>' +
+                          '<a href=/concerns/' + concern_id + "/comments/" + data.id + '/edit>' +
                           '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>編集</a> ' +
                           '<a data-confirm="本当に削除していいですか？" rel="nofollow"' + 'href = "/concerns/"' + concern_id + '/comments/' + data.id + '/delete>' +
-                          '<a href="/concerns/"' + concern_id + '/comments/' + data.id + '/delete>' +
+                          '<a href=/concerns/' + concern_id + '/comments/' + data.id + '/delete>' +
                           '<i class="fa fa-trash-o aria-hidden="true""></i>削除</a>' +
                           '<div id="like-button_' + data.id + '">' +
                           '<form class="button_to" method="post" action="/concerns/' + concern_id + '/comments/' + data.id  + '/likes" data-remote="true">' +

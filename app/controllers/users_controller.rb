@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
+  before_action :ensure_correct_user, only: [:show]
 
   def new
     @user = User.new
@@ -38,5 +39,9 @@ class UsersController < ApplicationController
 
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def ensure_correct_user
+      redirect_to concerns_path unless @user.id == current_user.id
     end
 end

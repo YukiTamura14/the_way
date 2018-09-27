@@ -1,3 +1,6 @@
+<head>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => 'reload' %>
+</head>
 <%= form_with(model: [@concern, @comment]) do |form| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">

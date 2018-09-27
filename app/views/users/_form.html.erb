@@ -2,6 +2,16 @@
   <div class="col-md-6 col-md-offset-3">
     <h2>Sign up</h2>
     <%= form_with(model: @user, local: true) do |form| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h4>必要事項を入力してください</h4>
+          <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
       <div class="form-group">
         <%= form.label :name %>
         <%= form.text_field :name, class: "form-control" %>

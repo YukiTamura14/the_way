@@ -1,5 +1,8 @@
 <div class='row form'>
   <div class='col-md-6 col-md-offset-3'>
+    <% if flash[:notice] %>
+      <h4><%= flash[:notice] %></h4>
+    <% end %>
     <h2>Log in</h2>
     <%= form_with(scope: :session, url: sessions_path, local: true) do |form| %>
       <div class="form-group">

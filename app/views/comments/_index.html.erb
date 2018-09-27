@@ -6,6 +6,7 @@
           <div class="comment_icon_area">
             <p class="user_icon"><%= image_tag(comment.user.icon.url, class: "comment_icon" ) if comment.user.icon.url.present? %></p>
             <p><%= comment.content %></p>
+            <p><%= comment.id %>
           </div>
           <p class="posted_by_at">posted by <%=link_to comment.user.name, conversations_path(sender_id: current_user.id, recipient_id: comment.user.id), method: :post %></p>
           <p class="posted_by_at"><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>

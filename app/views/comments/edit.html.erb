@@ -1,7 +1,4 @@
-<head>
-  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => 'reload' %>
-</head>
-<%= form_with(model: [@concern, @comment]) do |form| %>
+<%= form_with(model: [@concern, @comment], local: true) do |form| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>

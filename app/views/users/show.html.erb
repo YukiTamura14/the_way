@@ -12,12 +12,12 @@
 </div>
 <div class="container_fluid">
   <div class="row">
-    <div class="user_page col-xs-12 col-sm-6 col-md-3">
+    <div class="user_page col-xs-11 col-sm-6 col-md-3">
       <h3><%= @user.name %>のページ</h3>
       <p>メールアドレス：<%= @user.email %></p>
       <p><%= link_to "アカウントを編集する", edit_user_path(@user) %></p>
     </div>
-    <div class="user_icon">
+    <div class="user_icon col-xs-11 col-sm-6 col-md-3">
       <%= image_tag(@user.icon.url, class: "icon_area" ) if @user.icon.url.present? %>
     </div>
   </div>

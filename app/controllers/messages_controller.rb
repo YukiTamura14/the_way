@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   before_action do
      @conversation = Conversation.find(params[:conversation_id])
    end
+   before_action :ensure_correct_messenger, only: [:create, :index]
 
    def index
      @messages = @conversation.messages
@@ -36,5 +37,9 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:body, :user_id)
+  end
+
+  def ensure_correct_messenger
+    redirect_to concerns_path(@concern) unless @conversation.sender_id == current_user.id
   end
 end

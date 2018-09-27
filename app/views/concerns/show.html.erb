@@ -16,13 +16,13 @@
   </div>
 </div>
 
-<div class="search_in_show">
+<dl class="search_in_show">
     <%= search_form_for @search do |form| %>
       <%= form.label :title_cont, "内容検索" %>
       <%= form.search_field :title_or_content_cont_any, class: "search_area_in_show", placeholder: "search.." %>
       <%= form.button fa_icon("search"), class: "btn btn-default btn-md" %>
     <% end %>
-</div>
+</dl>
 
 <div class="container">
   <p class="box"><%= @concern.user.name %>'s icon：<%= image_tag(@concern.user.icon.url, class: "comment_icon" ) if @concern.user.icon.url.present? %></p>

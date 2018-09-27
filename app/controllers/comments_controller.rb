@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :require_login, only: [:create, :edit, :update, :destroy]
   before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :ensure_correct_poster, only: [:edit, :destroy]
 
   def create
     @concern = Concern.find(params[:concern_id])
@@ -41,5 +42,9 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def ensure_correct_poster
+    redirect_to concerns_path(@concern) unless @comment.user_id == current_user.id
   end
 end

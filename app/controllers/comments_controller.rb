@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     if @comment.save
       render :show
     else
-      render :form
+      render json: @comment.errors, status: 422w
     end
   end
 

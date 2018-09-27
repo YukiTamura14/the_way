@@ -34,6 +34,9 @@ $('#comment_submit').on('click',function(e){
             $('.comment_index').prepend(element);
             $('#comment_area').val('')
         })
+        .fail(function(data) {
+            alert('コメントを入力してください');
+        });
  });
 
 function displayLikesCount(likesCount) {

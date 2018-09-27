@@ -56,10 +56,10 @@
 
   <p>コメント一覧</p>
   <div>
-    <%= render partial: 'comments/form', locals: {comment: @comment, concern: @concern} %>
+    <%= render partial: "comments/form", locals: {comment: @comment, concern: @concern} %>
   </div>
   <div id="comments_area">
-    <%= render partial: 'comments/index', locals: {comments: @comments, concern: @concern} %>
+    <%= render partial: "comments/index", locals: {comments: @comments, concern: @concern} %>
   </div>
 
   <div id="page_top"><a href="#"></a></div>

@@ -18,7 +18,7 @@ $('#comment_submit').on('click',function(e){
 
         .done(function(data) {
             var element ='<div class="comment_area">' + '<li>' + '<div class="comment_icon_area"' + '<p class="user_icon">' + '<img class="comment_icon" src=' + data.icon + '>' + '</p>' +
-                          '<p>' + data.content + '</p>' + '</div>' +
+                          '<p>' + escapeHtml(data.content) + '</p>' + '</div>' +
                           '<p class="posted_by_at">' +
                           'posted by <a rel="nofollow" data-method="post" href="/conversations?recipient_id=' + data.comment_user_id + '&;sender_id=' + data.current_user_id + '">' + data.name +
                           '</a>' + '</p>' + '<p class="posted_by_at">' + data.created_at + '</p>' + '</li>' +
@@ -38,4 +38,13 @@ $('#comment_submit').on('click',function(e){
 
 function displayLikesCount(likesCount) {
   return likesCount === 0 ? '' : likesCount
+}
+
+function escapeHtml(str) {
+    str = str.replace(/&/g, '&amp;');
+    str = str.replace(/</g, '&lt;');
+    str = str.replace(/>/g, '&gt;');
+    str = str.replace(/"/g, '&quot;');
+    str = str.replace(/'/g, '&#39;');
+    return str
 }

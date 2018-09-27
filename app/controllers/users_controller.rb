@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to concerns_path(session[:user_id]), notice: '登録しました！'
+      redirect_to concerns_path(session[:user_id]), notice: "登録しました！"
     else
       render :new
     end

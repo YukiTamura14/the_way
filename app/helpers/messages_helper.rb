@@ -19,5 +19,4 @@ module MessagesHelper
      end
      @message = @conversation.messages.build
    end
-
 end

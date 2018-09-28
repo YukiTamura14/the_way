@@ -112,23 +112,23 @@ header .navbar{
 }
 
 .search_button{
-    display: inline-block;
-    padding: 7px 20px;
-	  border-radius: 25px;
-    text-decoration: none;
-    color: #FFF;
-    background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
-    background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
-    transition: .4s;
-    width: 400px;
-    display: block;
-    margin: 0 auto;
-    margin-top: 30px;
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #FFF;
+  background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+  background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+  transition: .4s;
+  width: 400px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
 }
 
 .search_button:hover {
-    background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
-    background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+  background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+  background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
 }
 
 // ページトップに戻る
@@ -228,74 +228,74 @@ p.box{
 
 @media screen and (max-width: 1024px) {
 /* 1024pxまでの幅の場合に適応される */
-    body {
-        margin: 2%;
-    }
+  body {
+    margin: 2%;
+  }
 }
 
 @media screen and (max-width: 768px) {
 /* 768pxまでの幅の場合に適応される */
-     body {
-        margin: 2%;
-    }
+  body {
+    margin: 2%;
+  }
 }
 
 @media screen and (max-width: 480px) {
 /* 480pxまでの幅の場合に適応される */
-    body {
-      margin: 2%;
-    }
-    #concern_search{
-      border-radius: 22px;
-      -webkit-border-radius: 22px;
-      -moz-border-radius: 22px;
-      padding-bottom: 15%;
-      padding-left: 15%;
+  body {
+    margin: 2%;
+  }
+  #concern_search{
+    border-radius: 22px;
+    -webkit-border-radius: 22px;
+    -moz-border-radius: 22px;
+    padding-bottom: 15%;
+    padding-left: 15%;
    }
-    .search_area{
-      width: 180px;
-      height: 30px;
-      font-size: 1em;
-    }
-    .search{
-      width: 50%;
-      width: 300px;
-    }
-    #concern_search .btn{
-      width: 36px;
-      height: 36px;
-      padding: 0;
-   }
-   dl #concern_search{
-     padding: 0;
-   }
+  .search_area{
+    width: 180px;
+    height: 30px;
+    font-size: 1em;
+  }
+  .search{
+    width: 50%;
+    width: 300px;
+  }
+  #concern_search .btn{
+    width: 36px;
+    height: 36px;
+    padding: 0;
+ }
+ dl #concern_search{
+   padding: 0;
+ }
 }
 
 @media screen and (max-width: 360px) {
 /* 320pxまでの幅の場合に適応される */
-    body {
-        margin: 2%;
-    }
-    #concern_search{
-      border-radius: 22px;
-      -webkit-border-radius: 22px;
-      -moz-border-radius: 22px;
-      padding-bottom: 15%;
-      padding-left: 15%;
-   }
-    .search_area{
-      width: 180px;
-      height: 30px;
-      font-size: 1em;
-    }
-    .search{
-      width: 50%;
-      width: 300px;
-    }
-    #concern_search .btn{
-      width: 36px;
-      height: 36px;
-      padding: 0;
+  body {
+    margin: 2%;
+  }
+  #concern_search{
+    border-radius: 22px;
+    -webkit-border-radius: 22px;
+    -moz-border-radius: 22px;
+    padding-bottom: 15%;
+    padding-left: 15%;
+  }
+  .search_area{
+    width: 180px;
+    height: 30px;
+    font-size: 1em;
+  }
+  .search{
+    width: 50%;
+    width: 300px;
+  }
+  #concern_search .btn{
+    width: 36px;
+    height: 36px;
+    padding: 0;
    }
    dl #concern_search{
      padding: 0;
@@ -305,15 +305,15 @@ p.box{
 
 @media screen and (max-width: 320px) {
 /* 320pxまでの幅の場合に適応される */
-    body {
-        margin: 2%;
-    }
-    dl .search_area_in_show{
-      width: 190px;
-      font-size: 0.8em;
-    }
-    .back_to_list{
-      margin-left: 0;
-      margin-right: 10px;
-    }
+  body {
+    margin: 2%;
   }
+  dl .search_area_in_show{
+    width: 190px;
+    font-size: 0.8em;
+  }
+  .back_to_list{
+    margin-left: 0;
+    margin-right: 10px;
+  }
+}

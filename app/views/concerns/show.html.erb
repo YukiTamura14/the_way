@@ -30,7 +30,7 @@
   <p class="box">タイトル： <%= @concern.title %></p>
   <div class="note">
     <p class="line_break"><%= @concern.content %></p>
-    <p><%= image_tag  (@concern.image.url) if @concern.image.url.present? %></p>
+    <p><%= image_tag(@concern.image.url, class: "show_image") if @concern.image.url.present? %></p>
     <% if logged_in? %>
       <% if @concern.user_id == current_user.id %>
         <%= link_to edit_concern_path(@concern) do %>
@@ -51,7 +51,7 @@
           <% end %>
         <% end %>
       <% end %>
-  </div>
+    </div>
     <% end %>
 
   <p>コメント一覧</p>

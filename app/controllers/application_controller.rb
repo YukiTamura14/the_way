@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
-  include MessagesHelper
-  
+
   private
 
   def require_login

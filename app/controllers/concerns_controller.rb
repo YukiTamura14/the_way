@@ -1,6 +1,6 @@
 class ConcernsController < ApplicationController
-  before_action :set_concern, only: [:show, :edit, :update, :destroy]
   before_action :require_login, only: [:new, :edit, :destroy]
+  before_action :set_concern, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:destroy, :edit]
 
   def index

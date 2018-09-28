@@ -2,9 +2,9 @@ class CommentsController < ApplicationController
   before_action :require_login, only: [:create, :edit, :update, :destroy]
   before_action :set_comment, only: [:edit, :update, :destroy]
   before_action :ensure_correct_poster, only: [:edit, :destroy]
+  before_action :set_concern_comment, only: [:create, :edit, :update]
 
   def create
-    @concern = Concern.find(params[:concern_id])
     @comment = @concern.comments.build(content: params[:comment])
     @likes = Like.where(comment_id: params[:id])
     @comment.user_id = current_user.id
@@ -16,11 +16,9 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @concern = Concern.find(params[:concern_id])
   end
 
   def update
-    @concern = Concern.find(params[:concern_id])
     if @comment.update(comment_params)
       redirect_to concern_path(@concern.id), notice:"編集しました"
     else
@@ -47,4 +45,9 @@ class CommentsController < ApplicationController
   def ensure_correct_poster
     redirect_to concerns_path(@concern) unless @comment.user_id == current_user.id
   end
+
+  def set_concern_comment
+    @concern = Concern.find(params[:concern_id])
+  end
+
 end

@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2018_09_17_104853) do
   end
 
   create_table "concerns", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
+    t.string "title", null: false
+    t.text "content", null: false
     t.string "image"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -73,9 +73,9 @@ ActiveRecord::Schema.define(version: 2018_09_17_104853) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "icon"

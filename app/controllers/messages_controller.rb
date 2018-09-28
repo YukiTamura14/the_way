@@ -16,23 +16,21 @@ class MessagesController < ApplicationController
      @messages = @conversation.messages
    end
 
-   if @messages.last
-     if @messages.last.user_id != current_user.id
+   if @messages.last && @messages.last.user_id != current_user.id
       @messages.last.read = true
-     end
    end
-   @message = @conversation.messages.build
- end
+     @message = @conversation.messages.build
+  end
 
- def create
-   @message = @conversation.messages.build(message_params)
-   if @message.save
-     redirect_to conversation_messages_path(@conversation)
-   else
-     flash[:danger] = "メッセージを入力してください"
-     redirect_to  conversation_messages_path
-   end
- end
+  def create
+    @message = @conversation.messages.build(message_params)
+    if @message.save
+      redirect_to conversation_messages_path(@conversation)
+    else
+      flash[:danger] = "メッセージを入力してください"
+      redirect_to  conversation_messages_path
+    end
+  end
 
   private
 

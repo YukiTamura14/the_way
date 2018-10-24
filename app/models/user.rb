@@ -10,4 +10,10 @@ class User < ApplicationRecord
 
   has_secure_password
   mount_uploader :icon, IconUploader
+
+  def post_comment(concern, content)
+    comment = comments.build(content: content)
+    comment.concern_id = concern.id
+    comment
+  end
 end

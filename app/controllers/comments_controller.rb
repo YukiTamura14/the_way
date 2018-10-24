@@ -5,9 +5,8 @@ class CommentsController < ApplicationController
   before_action :set_concern_comment, only: [:create, :edit, :update]
 
   def create
-    @comment = @concern.comments.build(content: params[:comment])
+    @comment = current_user.post_comment(@concern, params[:comment])
     @likes = Like.where(comment_id: params[:id])
-    @comment.user_id = current_user.id
     if @comment.save
       render :show
     else

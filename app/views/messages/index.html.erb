@@ -7,9 +7,7 @@
   <p><%= flash[:danger] %></p>
 <% end %>
 <div class="message">
-  <% if @over_ten %>
-    <%= link_to "以前のメッセージ", "?m=all" %>
-  <% end %>
+  <%= link_to "以前のメッセージ", "?m=all" if @over_ten %>
   <div class="ui segment">
     <% @messages.each do |message| %>
       <% if message.body %>
@@ -31,7 +29,9 @@
            <div class="item">
              <div class="content">
                <div class="list_and_new_btn">
-                 <p class="faceicon"><%= image_tag(message.user.icon.url, class: "comment_icon" ) if message.user.icon.url.present? %></p>
+                 <p class="faceicon">
+                   <%= image_tag(message.user.icon.url, class: "comment_icon" ) if message.user.icon.url.present? %>
+                 </p>
                  <div class="list chatting">
                    <div class="item says">
                       <i class="right triangle icon"></i>

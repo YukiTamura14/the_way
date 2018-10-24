@@ -17,8 +17,7 @@ class ConcernsController < ApplicationController
   end
 
   def create
-    @concern = Concern.new(concern_params)
-    @concern.user_id = current_user.id
+    @concern = current_user.concerns.build(concern_params)
     if @concern.save
       redirect_to concerns_path, notice: '投稿されました。'
     else
@@ -51,8 +50,7 @@ class ConcernsController < ApplicationController
   end
 
   def confirm
-    @concern = Concern.new(concern_params)
-    @concern.user_id = current_user.id
+    @concern = current_user.concerns.build(concern_params)
     render :new if @concern.invalid?
   end
 
